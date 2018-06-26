@@ -1,0 +1,3 @@
+.gitignore
+application/libraries/composer.lock
+application/libraries/vendor/mobiledetect/mobiledetectlib/composer.lock
