@@ -177,11 +177,14 @@ class Smarty_Template_Source
         }
         // create new source  object
         $source = new Smarty_Template_Source($smarty, $template_resource, $type, $name);
+        // exit(print_r($_template));
         $source->handler->populate($source, $_template);
+
         if (!$source->exists && isset($_template->smarty->default_template_handler_func)) {
             Smarty_Internal_Method_RegisterDefaultTemplateHandler::_getDefaultTemplate($source);
             $source->handler->populate($source, $_template);
         }
+        
         return $source;
     }
 

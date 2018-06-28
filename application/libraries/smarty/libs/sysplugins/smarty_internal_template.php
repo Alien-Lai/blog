@@ -134,6 +134,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
         // Template resource
         $this->template_resource = $template_resource;
         $this->source = Smarty_Template_Source::load($this);
+        // exit(print_r($this->source));
         parent::__construct();
         if ($smarty->security_policy && method_exists($smarty->security_policy, 'registerCallBacks')) {
             $smarty->security_policy->registerCallBacks($this);
@@ -159,6 +160,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
             $this->smarty->_debug->start_template($this, $display);
         }
         // checks if template exists
+        // exit(print_r($this->source));
         if (!$this->source->exists) {
             throw new SmartyException("Unable to load template '{$this->source->type}:{$this->source->name}'" .
                                       ($parentIsTpl ? " in '{$this->parent->template_resource}'" : ''));

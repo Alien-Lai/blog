@@ -227,7 +227,7 @@ switch (ENVIRONMENT)
 	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 
 	// Path to the system directory
-	define('BASEPATH', $system_path);
+	define('BASEPATH', str_replace("\\", "/", $system_path));
 
 	// Path to the front controller (this file) directory
 	define('FCPATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
@@ -304,13 +304,17 @@ switch (ENVIRONMENT)
 	}
 
 	// define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
-
-
-//系统根目录
+// 默认模板后缀
+define('DEFAULT_VIEWS_EXT','.htm');
+// 系统根目录
 define('ROOTPATH', dirname(dirname(__FILE__)) . '/');
-
-//视图目录
+// Smarty
+define('TEMPLATE_PATH', ROOTPATH . 'webapp/views/');
+// 视图目录
 define('VIEWPATH', ROOTPATH . 'webapp/views/');
+// traits
+define('TRAITS_DIR', APPPATH . 'controllers/Traits/');
+
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

@@ -7,6 +7,9 @@ class Line extends M_Controller {
 	// 首页
 	public function index()
 	{
-		$this->load->view('line/index');
+		// 获取最新文章列表
+        $data = $this->articleModel->getArtlist();
+        $this->smarty->assign('data',$data);
+		$this->smarty->display('line/index');
 	}
 }

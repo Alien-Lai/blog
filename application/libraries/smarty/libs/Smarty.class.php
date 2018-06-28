@@ -1210,9 +1210,11 @@ class Smarty extends Smarty_Internal_TemplateBase
             $parts[ 'root' ] = substr(getcwd(), 0, 2) . $parts[ 'root' ];
         } else {
             if ($realpath !== null && !$parts[ 'root' ]) {
-                $path = getcwd() . DS . $path;
+                // ###### lmj ######
+                $path = getcwd() . DS . 'views' . DS . $path . DEFAULT_VIEWS_EXT;
             }
         }
+
         // remove noop 'DS DS' and 'DS.DS' patterns
         $path = preg_replace('#([\\\\/]([.]?[\\\\/])+)#', DS, $path);
         // resolve '..DS' pattern, smallest first
@@ -1230,7 +1232,6 @@ class Smarty extends Smarty_Internal_TemplateBase
                                      DS, $path);
             }
         }
-
         return $parts[ 'root' ] . $path;
     }
 

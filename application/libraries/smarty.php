@@ -9,8 +9,7 @@ class CI_Smarty extends Smarty
     public function __construct()
     {
         parent::__construct();
-
-//        $this->setTemplateDir(APPPATH . 'views/');
+        // $this->setTemplateDir(ROOTPATH . 'webapp/views');
         $this->setTemplateDir(TEMPLATE_PATH);
         $this->setCacheDir(ROOTPATH . 'sitedata/views_c');
         $this->setCompileDir(ROOTPATH . 'sitedata/views_c');
