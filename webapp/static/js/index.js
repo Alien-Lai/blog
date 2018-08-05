@@ -12,9 +12,9 @@
         		app.page++;
         		var html = '';
         		$.each(data.data.list,function(index,value){
-			var type = value.type;
-			var tagLength = value.tags.length;
-			if(type == 1){
+        			var type = value.type;
+        			var tagLength = value.tags.length;
+        			if(type == 1){
 			            // 纯文本
 			            html+='<div class="ajax-load-con content posts-default wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">';
 	                    html+='        <div class="content-box">';
@@ -153,15 +153,14 @@
 			//滚动到底部加载数据
 			$(window).scroll(function () {
 				var _this = $('#fa-loadmore');
-				var scrollTop 	 = $(this).scrollTop(),
-					windowHeight = $(this).height(),
+				var scrollTop 	 = $(document).scrollTop(),
+					// windowHeight = $(this).height(),
 					scrollHeight = $(document).height();
-
-				if (scrollTop + windowHeight == scrollHeight && app.loadComplated == false) {
-					
+  
+				if (scrollTop + 1000 >= scrollHeight && app.loadComplated == false) {
 					_this.addClass('is-loading');
 					_this.html('<i class="icon-spin6 animate-spin"></i> loading...');
-					getdata('/Index/loadMore',{
+					getdata('/Line/loadMore',{
 						page : app.page
 					},function(data){
 						app.loadMore(data);

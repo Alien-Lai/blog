@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-06-28 12:47:22
+/* Smarty version 3.1.30, created on 2018-08-04 15:55:15
   from "E:\PHPstudy2016\WWW\blog\webapp\views\common\header.htm" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b34d8da25c202_17652455',
+  'unifunc' => 'content_5b65cc63556572_66504657',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'caa97ad7cf12e372cc91020963d9f5eee5e9c519' => 
     array (
       0 => 'E:\\PHPstudy2016\\WWW\\blog\\webapp\\views\\common\\header.htm',
-      1 => 1530190034,
+      1 => 1533398112,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5b34d8da25c202_17652455 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b65cc63556572_66504657 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-<html>
+<!DOCTYPE html >
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
@@ -56,10 +56,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 >
         <?php echo '<script'; ?>
  type="text/javascript" src="<?php echo @constant('STATIC');?>
-/js/suxingme.js"><?php echo '</script'; ?>
->
-        <?php echo '<script'; ?>
- type="text/javascript" src="<?php echo @constant('STATIC');?>
 /js/owl.js"><?php echo '</script'; ?>
 >
         <?php echo '<script'; ?>
@@ -89,15 +85,15 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
  >hljs.initHighlightingOnLoad();<?php echo '</script'; ?>
 >  
     </head>
-<body>
-<empty name="showHeader">
-<div id="header" class="navbar-fixed-top" style="top: 0px;">
+<body class="post-template-default single single-post postid-1817 single-format-standard post-style02 black-top">
+
+<div id="header" class="navbar-fixed-top nt-header" style="top: 0px;">
     <div class="container">
         <h1 class="logo">
             <a href="//" title="GRACE" style="background-image: url(//wp-content/themes/2018020921594790/img/logo.png);"></a>
         </h1>
 
-        <div role="navigation" class="site-nav  primary-menu">
+        <div role="navigation" class="site-nav primary-menu">
             <div class="menu-fix-box">
                 <ul id="menu-navigation" class="menu">
 
@@ -198,5 +194,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
         </div>
     </div>
 </div>
-</empty><?php }
+<?php }
 }

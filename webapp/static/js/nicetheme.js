@@ -68,21 +68,21 @@ function variables() {
 */
 
 function stickyHeader(){
-    // if ($pageHeader.is(".nt-header")) {
-    //     var sticky       = $('.nt-header'),
-    //         scroll       = $window.scrollTop();
+    if ($pageHeader.is(".nt-header")) {
+        var sticky       = $('.nt-header'),
+            scroll       = $window.scrollTop();
 
-    //     if ( scroll > $pageHeader_height ) {
+        if ( scroll > $pageHeader_height ) {
 
-    //         sticky.addClass('fixed');
-    //         //$pageWrapper.css("margin-top", $pageHeader_height);
+            sticky.addClass('fixed');
+            //$pageWrapper.css("margin-top", $pageHeader_height);
 
 
-    //     } else {
-    //         sticky.removeClass('fixed');
-    //         //$pageWrapper.removeAttr("style");
-    //     }
-    // }
+        } else {
+            sticky.removeClass('fixed');
+            //$pageWrapper.removeAttr("style");
+        }
+    }
 };
 
 function scrollTop() {
@@ -188,124 +188,124 @@ jQuery(document).ready(function($) {
     variables();
     postcoverHeight();
 
-    // if( globals.home != 0 ){
-    //     $('.nt-slider').owlCarousel({
-    //         items:1,
-    //         loop:true,
-    //         nav:true,
-    //         smartSpeed:1200,
-    //         autoplay:true,
-    //         autoplayTimeout:5000,
-    //         autoplayHoverPause:true,
-    //         navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-    //         responsive:{
-    //             0:{
-    //                 nav:false,
-    //             },
-    //             992:{
-    //                 nav:true,
-    //             }
-    //         }
-    //     });
-    //     $('.nt-featured-posts').owlCarousel({
-    //         margin:10,
-    //         loop:true,
-    //         nav:false,
-    //         dots:false,
-    //         responsiveClass:true,
-    //         responsive:{
-    //             0:{
-    //                 items:2,
-    //                 center: false,
-    //                 loop:false,
-    //                 margin:5,
-    //                 nav:true,
-    //                 navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-    //             },
-    //             480:{
-    //                 items:2,
-    //                 center: false,
-    //                 loop:false,
-    //                 margin:5,
-    //                 nav:true,
-    //                 navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-    //             },
-    //             768:{
-    //                 items:2,
-    //                 center: false,
-    //                 loop:false,
-    //                 margin:5,
-    //                 nav:true,
-    //                 navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-    //             },
-    //             992:{
-    //                 items:3,
-    //                 center: false,
-    //                 margin:10,
-    //                 loop:false
+    if( globals.home != 0 ){
+        $('.nt-slider').owlCarousel({
+            items:1,
+            loop:true,
+            nav:true,
+            smartSpeed:1200,
+            autoplay:true,
+            autoplayTimeout:5000,
+            autoplayHoverPause:true,
+            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+            responsive:{
+                0:{
+                    nav:false,
+                },
+                992:{
+                    nav:true,
+                }
+            }
+        });
+        $('.nt-featured-posts').owlCarousel({
+            margin:10,
+            loop:true,
+            nav:false,
+            dots:false,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    items:2,
+                    center: false,
+                    loop:false,
+                    margin:5,
+                    nav:true,
+                    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                },
+                480:{
+                    items:2,
+                    center: false,
+                    loop:false,
+                    margin:5,
+                    nav:true,
+                    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                },
+                768:{
+                    items:2,
+                    center: false,
+                    loop:false,
+                    margin:5,
+                    nav:true,
+                    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                },
+                992:{
+                    items:3,
+                    center: false,
+                    margin:10,
+                    loop:false
                     
-    //             },
-    //             1170:{
-    //                 items:4,
-    //                 margin:20,
-    //                 loop:false
-    //             }
+                },
+                1170:{
+                    items:4,
+                    margin:20,
+                    loop:false
+                }
 
-    //         }
-    //     });
+            }
+        });
 
-    //     $('.topic-grid').owlCarousel({
-    //         loop:true,
-    //         smartSpeed:800,
-    //         responsiveClass:true,
-    //         responsive:{
-    //             0:{
-    //                 margin:6,
-    //                 items:2,
-    //                 dots:true,
-    //                 nav:false
-    //             },
-    //             768:{
-    //                 items:1,
-    //                 dots:true,
-    //                 nav:false
-    //             },
-    //             1000:{
-    //                 items:1,
-    //                 dots:true,
-    //                 nav:true,
-    //                 navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
-    //             }
-    //         }
+        $('.topic-grid').owlCarousel({
+            loop:true,
+            smartSpeed:800,
+            responsiveClass:true,
+            responsive:{
+                0:{
+                    margin:6,
+                    items:2,
+                    dots:true,
+                    nav:false
+                },
+                768:{
+                    items:1,
+                    dots:true,
+                    nav:false
+                },
+                1000:{
+                    items:1,
+                    dots:true,
+                    nav:true,
+                    navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
+                }
+            }
 
-    //     });
+        });
 
 
-    // }
-    // if( globals.single != 0 && globals.post_style == 'five' ){ 
-    //     var owl = $('.post-slide');
-    //     owl.owlCarousel({      
-    //         items:1,
-    //         smartSpeed:1050,
-    //         loop:false,
-    //         dots:true,
-    //         nav:true,
-    //         videoHeight:true,
-    //         navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
+    }
+    if( globals.single != 0 && globals.post_style == 'five' ){ 
+        var owl = $('.post-slide');
+        owl.owlCarousel({      
+            items:1,
+            smartSpeed:1050,
+            loop:false,
+            dots:true,
+            nav:true,
+            videoHeight:true,
+            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
 
-    //     });
-    // }
+        });
+    }
 
-    // if( globals.single != 0 && globals.post_style == 'one' || globals.post_style == 'two' || globals.post_style == 'three' || globals.post_style == 'six'){
+    if( globals.single != 0 && globals.post_style == 'one' || globals.post_style == 'two' || globals.post_style == 'three' || globals.post_style == 'six'){
 
-    //     /* 
-    //         Sticky Sidebar
-    //         -------------------------------------------------------
-    //     */
-    //     $('.l-sidebar').theiaStickySidebar({
-    //         additionalMarginTop: 90
-    //     });
-    // }
+        /* 
+            Sticky Sidebar
+            -------------------------------------------------------
+        */
+        $('.l-sidebar').theiaStickySidebar({
+            additionalMarginTop: 90
+        });
+    }
 
     /*
         navbar-nav  
@@ -423,7 +423,7 @@ var $ = jQuery.noConflict();
 
 $.fn.postLike = function() {
     if ($(this).hasClass('current')) {
-        mi_prompt( 'error', '您已点过喜欢啦:-)' );
+        // mi_prompt( 'error', '您已点过喜欢啦:-)' );
         return false;
     } else {
         $(this).addClass('current');
@@ -766,36 +766,36 @@ function popupGallery( gclass, aclass ) {
 
 jQuery(document).ready(function($){
 
-    // if( globals.image_popup !== 'null' && globals.image_popup !== 'disable' ){
+    if( globals.image_popup !== 'null' && globals.image_popup !== 'disable' ){
         
-    //     if( globals.image_popup == 'image' ){
-    //         var aclass = 'suxing-popup-image';
-    //     }else if( globals.image_popup == 'gallery' ){
-    //         var aclass = 'suxing-popup-gallery-item';
-    //     }
-    //     var matching = new RegExp("\[.](?:gif|png|jpg|jpeg|webp)($|[?])"),
-    //         image_popup;
-    //     $(".suxing-popup-gallery a").each(function(){
+        if( globals.image_popup == 'image' ){
+            var aclass = 'suxing-popup-image';
+        }else if( globals.image_popup == 'gallery' ){
+            var aclass = 'suxing-popup-gallery-item';
+        }
+        var matching = new RegExp("\[.](?:gif|png|jpg|jpeg|webp)($|[?])"),
+            image_popup;
+        $(".suxing-popup-gallery a").each(function(){
             
-    //         if( matching.test( $(this).attr('href') ) && $(this).children('img').length == 1 ){
-    //             $(this).addClass(aclass);
-    //             image_popup = true;
-    //         } else {
-    //             image_popup = false;
-    //         }
+            if( matching.test( $(this).attr('href') ) && $(this).children('img').length == 1 ){
+                $(this).addClass(aclass);
+                image_popup = true;
+            } else {
+                image_popup = false;
+            }
 
-    //     });
+        });
 
-    //     if( image_popup ){
-    //         if( globals.image_popup == 'image' ){
-    //             popupImage();
-    //         }else if( globals.image_popup == 'gallery'  ){
-    //             popupGallery();
-    //         }
-    //         //popupIframe();
-    //     }
+        if( image_popup ){
+            if( globals.image_popup == 'image' ){
+                popupImage();
+            }else if( globals.image_popup == 'gallery'  ){
+                popupGallery();
+            }
+            //popupIframe();
+        }
 
-    // }
+    }
 
     if( $('.suxing-post-popup-gallery').length > 0 ){
         popupGallery('.suxing-post-popup-gallery', 'a.suxing-post-popup-gallery-item');
@@ -809,12 +809,53 @@ $(document).on('click', '.comment-reply-link', function(event) {
 
 $(document).on('click', '.add_image', function(event) {
     event.preventDefault();
-    $('#comment').insertAtCaret(" [img src='图片地址' alt='图片描述'] ");
+    $('.file').trigger('click');
+});
+
+$(document).on('change', '.file', function(event) {
+    event.preventDefault();
+    var formData = new FormData($( "#uploadForm" )[0]);  
+    $.ajax({  
+        url: '/Upload/index' ,  
+        type: 'POST',  
+        data: formData,  
+        dataType: 'json',
+        async: false,  
+        cache: false,  
+        contentType: false,  
+        processData: false,  
+        beforeSend: function (XHR) {
+            layer.load(2);
+        },
+        success: function (data) {  
+            layer.closeAll('loading');
+            if(data.code > 0){
+                $('#comment').insertAtCaret(" [img src='"+ data.data +"' alt='图片描述']\n");
+            }else{
+                layer.msg('error');
+            }
+        },  
+        error: function (error) {  
+            console.log(error);  
+        }  
+    });  
+});
+
+$(document).on('click','#logout',function(){
+    getdata('/line/logout',{},function(data){
+        if(data.code > 0){
+            layer.msg('√ 退出成功');
+            $('.comment-from-main').remove();
+            $('.no-login-input').show();
+            $('.login-show-info').removeClass('login').addClass('nlogin');
+            $('#author,#email').val('');
+        }
+    });
 });
 
 $(document).on('click', '.add_code', function(event) {
     event.preventDefault();
-    $(this).parent().parent().find('#comment').insertAtCaret("[code]\nYour Code\n[/code]");
+    $(this).parent().parent().find('#comment').insertAtCaret("[code]\nYour Code\n[/code]\n");
 });
 
 $(mi_comment_hide());

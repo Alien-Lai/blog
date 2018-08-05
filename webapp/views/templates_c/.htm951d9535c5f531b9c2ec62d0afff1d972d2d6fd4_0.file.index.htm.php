@@ -1,27 +1,28 @@
 <?php
-/* Smarty version 3.1.30, created on 2018-06-28 15:46:47
+/* Smarty version 3.1.30, created on 2018-08-04 04:57:33
   from "E:\PHPstudy2016\WWW\blog\webapp\views\line\index.htm" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5b3502e70f9cb2_50030674',
+  'unifunc' => 'content_5b65323d7e57f4_53589689',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '951d9535c5f531b9c2ec62d0afff1d972d2d6fd4' => 
     array (
       0 => 'E:\\PHPstudy2016\\WWW\\blog\\webapp\\views\\line\\index.htm',
-      1 => 1530200804,
+      1 => 1533358641,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:common/header' => 1,
+    'file:common/footer' => 1,
   ),
 ),false)) {
-function content_5b3502e70f9cb2_50030674 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5b65323d7e57f4_53589689 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'E:\\PHPstudy2016\\WWW\\blog\\application\\libraries\\smarty\\libs\\plugins\\modifier.date_format.php';
 $_smarty_tpl->_subTemplateRender("file:common/header", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -49,7 +50,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
                                             <div class="posts-default-content">
 
                                                 <div class="posts-text">
-                                                    <a href="/article/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+                                                    <a href="/articles/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['content'];?>
 </a>
                                                 </div>
@@ -83,7 +84,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
                                      style="visibility: visible; animation-name: fadeInUp;">
                                     <div class="content-box">
                                         <div class="posts-default-img">
-                                            <a href="/article/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+                                            <a href="/articles/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 "
                                                title="<?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
 " target="_blank">
@@ -93,12 +94,9 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['obj']->value) {
 ?>
-                                                    <img class="lazy thumbnail"
-                                                     data-original=""
-                                                     src="http://<?php echo @constant('BACK_URL');
+                                                    <img class="lazy thumbnail" data-original="" src="http://<?php echo @constant('BACK_URL');
 echo $_smarty_tpl->tpl_vars['obj']->value;?>
-"
-                                                     alt="<?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
 " style="display: block;">
                                                 <?php
 }
@@ -111,13 +109,22 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                         <div class="posts-default-box">
                                             <div class="posts-default-title">
                                                 <div class="post-entry-categories">
-                                                    <foreach from="item.tags" id="obj">
+                                                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['item']->value['tags'], 'obj');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['obj']->value) {
+?>
                                                         <a href="/tag/<?php echo $_smarty_tpl->tpl_vars['obj']->value;?>
 " rel="tag"><?php echo $_smarty_tpl->tpl_vars['obj']->value;?>
 </a>
-                                                    </foreach>
+                                                    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
                                                 </div>
-                                                <h2><a href="/article/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+                                                <h2><a href="/articles/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " title="<?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
 " target="_blank"><?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
 </a>
@@ -157,7 +164,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                 <div class="ajax-load-con content wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                                     <div class="content-box posts-gallery-box">
                                         <div class="posts-gallery-img">
-                                            <a href="/article/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+                                            <a href="/articles/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " title="<?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
 ">
                                                 <?php
@@ -179,7 +186,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                         </div>
                                         <div class="posts-gallery-content">
                                             <h2>
-                                                <a href="/article/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+                                                <a href="/articles/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " title="<?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
 "><?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
 </a>
@@ -217,13 +224,22 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                     <div class="content-box posts-image-box">
                                         <div class="posts-default-title">
                                             <div class="post-entry-categories">
-                                                <volist name="item.tags" id="obj">
+                                                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['item']->value['tags'], 'obj');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['obj']->value) {
+?>
                                                     <a href="/tag/<?php echo $_smarty_tpl->tpl_vars['obj']->value;?>
 " rel="tag"><?php echo $_smarty_tpl->tpl_vars['obj']->value;?>
 </a>
-                                                </volist>
+                                                <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
+?>
+
                                             </div>
-                                            <h2><a href="/article/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+                                            <h2><a href="/articles/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " title="<?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
 "
                                                    target="_blank"><?php echo $_smarty_tpl->tpl_vars['item']->value['title'];?>
@@ -238,7 +254,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['obj']->value) {
 ?>
                                                     <li>
                                                         <div class="image-item">
-                                                            <a href="/article/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
+                                                            <a href="/articles/<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 ">
                                                                 <div class="overlay"></div>
                                                                 <img class="lazy thumbnail"
@@ -291,7 +307,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
                     </div>
                     <div class="clearfix"></div>
-                    <?php if (count($_smarty_tpl->tpl_vars['data']->value['list']) > 0) {?>
+                    <?php if ($_smarty_tpl->tpl_vars['data']->value['total'] > 10) {?>
                         <div id="ajax-load-posts">
                             <button id="fa-loadmore" class="button button-more wow fadeInUp" data-wow-delay="0.3s"
                                     data-home="true" data-paged="2" data-action="fa_load_postlist" data-total="4"
@@ -321,7 +337,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                     <a href="/special/china" title="中国">
                                         <div class="overlay"></div>
                                         <div class="image"
-                                             style="background-image: url(//wp-content/uploads/2017/07/2017072901045867.jpg);"></div>
+                                             style="background-image: url('<?php echo @constant('STATIC');?>
+/img/img_usercard_bg.jpg');"></div>
                                         <div class="title">
                                             <h4>国，是以华夏文明为源泉、中华文化为基础，并以汉族为主体民族的多民族国家，通用汉语、汉字，汉族与少数民族</h4>
 
@@ -335,7 +352,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                     <a href="/special/keji" title="恐怖故事">
                                         <div class="overlay"></div>
                                         <div class="image"
-                                             style="background-image: url(//wp-content/uploads/2017/09/2017090212240145.jpg);"></div>
+                                             style="background-image: url('<?php echo @constant('STATIC');?>
+/img/img_usercard_bg.jpg');"></div>
                                         <div class="title">
                                             <h4>最受欢迎的恐怖故事广播</h4>
 
@@ -349,7 +367,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
                                     <a href="/special/gg" title="广告">
                                         <div class="overlay"></div>
                                         <div class="image"
-                                             style="background-image: url(//wp-content/uploads/2016/10/2016101811390365.jpg);"></div>
+                                             style="background-image: url('<?php echo @constant('STATIC');?>
+/img/img_usercard_bg.jpg');"></div>
                                         <div class="title">
                                             <h4>松下那些情怀的广告</h4>
 
@@ -617,6 +636,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 <?php echo '<script'; ?>
  src="<?php echo @constant('STATIC');?>
 /js/index.js"><?php echo '</script'; ?>
->   
-<?php }
+>
+<?php $_smarty_tpl->_subTemplateRender("file:common/footer", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+  <?php }
 }

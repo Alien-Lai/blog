@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Article extends CI_Model {
+class Article extends Common {
 
 	/**
      *  Page size
@@ -10,7 +10,7 @@ class Article extends CI_Model {
     /**
      *  Table name
      */
-    protected static $Table_Name = 'article';
+    protected static $Article = 'article';
 
     /**
      *  Categoty name
@@ -47,10 +47,11 @@ class Article extends CI_Model {
         }
     	$where['status'] = 1;
     	$start = ($page - 1) * self::PAGESIZE;
-        $total = $this->db->select(self::$DefaultField)->where($where)->count_all_results(self::$Table_Name);
-    	$list  = $this->db->select(self::$DefaultField)->where($where)->limit($page, $start)->order_by('create_time','DESC')->get(self::$Table_Name)->result_array();
+        $total = $this->db->select(self::$DefaultField)->where($where)->count_all_results(self::$Article);
+    	$list  = $this->db->select(self::$DefaultField)->where($where)->limit(self::PAGESIZE, $start)->order_by('create_time','DESC')->get(self::$Article)->result_array();
+        
     	$data['list']    = $list; 
-        $data['total']   = ceil($total / self::PAGESIZE);
+        $data['total']   = $total;  //ceil($total / self::PAGESIZE);
         $data['backUrl'] = BACK_URL;
         return $this->format($data,'index_list');
     }
@@ -84,10 +85,10 @@ class Article extends CI_Model {
             case 'detail':
                 // 上下一篇
                 $nowID = $data['id'];
-                $prev  = M('article')->field('id,title')->where("id < $nowID")->order('id desc')->limit(1)->select();
-                $next  = M('article')->field('id,title')->where("id > $nowID")->order('id asc')->limit(1)->select();
-                $data['prev'] = empty($prev) ? ['id'=> $nowID, 'title'=> $data['title']] : $prev[0];
-                $data['next'] = empty($next) ? ['id'=> $nowID, 'title'=> $data['title']] : $next[0];
+                $prev  = $this->getNearArticle('prev', $nowID);
+                $next  = $this->getNearArticle('next', $nowID);
+                $data['prev'] = empty($prev) ? ['id'=> $nowID, 'title'=> $data['title']] : $prev;
+                $data['next'] = empty($next) ? ['id'=> $nowID, 'title'=> $data['title']] : $next;
 
                 $data['create_time'] = date('Y-m-d',$data['create_time']);
                 $data['content']     = html_entity_decode($data['content']);
@@ -97,7 +98,7 @@ class Article extends CI_Model {
                     $id = $value['id'];
                     // 查找二级评论
                     $where = ['fid' => $id];
-                    $child = M(self::$comment_table)->field(self::$commentField)->where($where)->order('create_time DESC')->select();
+                    $child = $this->db->select(self::$commentField)->where($where)->order_by('create_time','DESC')->get(self::$comment_table)->result_array();
                     $data[$key]['child'] = $child;
                     $data[$key]['create_time'] = $this->formatTime($value['create_time']);
                     // 格式化时间
@@ -108,7 +109,7 @@ class Article extends CI_Model {
                         }
                     }
                     // 转义HTML
-                    $content = html_entity_decode(htmlspecialchars_decode($value['content']));
+                    $content = stripslashes(html_entity_decode(htmlspecialchars_decode($value['content'])));
                     $data[$key]['content'] = $content;
                 }
                 break;
@@ -127,7 +128,7 @@ class Article extends CI_Model {
     public function getDetailByID(int $id)
     {
         $where = ['id'=>$id];
-        $find  = $this->table->where($where)->find();
+        $find  = $this->db->where($where)->get(self::$Article)->row_array();
         return empty($find) ? false : $this->format($find,'detail');
     }
 
@@ -142,7 +143,7 @@ class Article extends CI_Model {
             'fid'        => 0,
             'article_id' => $id
         ];
-        $list = M(self::$comment_table)->field(self::$commentField)->where($where)->order('create_time DESC')->select();
+        $list = $this->db->select(self::$commentField)->where($where)->order_by('create_time','DESC')->get(self::$comment_table)->result_array();
         return empty($list) ? false : $this->format($list,'comment');
     }
 
@@ -151,7 +152,8 @@ class Article extends CI_Model {
      * @param  number $time 时间戳
      * @return string       返回多少以前
      */
-    private function formatTime($time) {
+    private function formatTime($time) 
+    {
         $time = (int) substr($time, 0, 10);
         $int = time() - $time;
         $str = '';
@@ -167,5 +169,38 @@ class Article extends CI_Model {
             $str = date('Y-m-d H:i:s', $time);
         }
         return $str;
+    }
+
+    /**
+     * 获取上一篇，下一篇
+     */
+    private function getNearArticle(string $type = 'prev', int $nowID)
+    {
+        $whereString = ($type == 'prev') ? "id < $nowID" : "id > $nowID";
+        return $this->db->select('id,title')
+                        ->where($whereString)
+                        ->order_by('id','desc')
+                        ->limit(1)
+                        ->get(self::$Article)
+                        ->row_array();
+    }
+
+    /**
+     * 提交评论
+     * 
+     * @param array $data  
+     * @return json
+     */
+    public function subComment($data)
+    {
+        $data['create_time'] = time();
+        $data['ip'] = getIp();
+        $this->db->insert(self::$comment_table, $data);
+        $affected_rows = $this->db->affected_rows();
+        if($affected_rows > 0){
+            return returnJson( 1, 'success', $affected_rows);
+        }else{
+            return returnJson(-2, 'error');
+        }
     }
 }

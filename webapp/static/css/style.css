@@ -2946,7 +2946,7 @@ Author URI:http://www.nicetheme.cn
 
 .authors_profile .avatar-panel {
 	position: relative;
-	background: url(img/img_usercard_bg.jpg) center center no-repeat;
+	background: url(../img/img_usercard_bg.jpg) center center no-repeat;
 	background-size: cover;
 	height: 140px;
 	margin: -35px -30px 46px;

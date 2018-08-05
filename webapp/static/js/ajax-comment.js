@@ -10,6 +10,17 @@ jQuery(document).ready(function(jQuery) {
 			parent.find('.form-comment-info').show();
 			parent.find('.comment-respond').slideToggle();
 		},
+      loginShow : function(comment_name){
+         var html = '';
+         $('.no-login-input').hide();
+         $('.login-show-info').removeClass('nlogin').addClass('login');
+         html+= '<div class="comment-from-main">';
+         html+= '    <div class="logged-in-as">'+ comment_name +'';
+         html+= '        <a href="javascript:void(0);" id="logout"><i>[ 退出 ]</i></a>';
+         html+= '    </div>';
+         html+= '</div>';
+         $('.login-show-info').prepend(html);
+      },
 		commentSub : function (_this){
 			var author  = _this.parent().parent().parent().find('#author').val();
 			var email   = _this.parent().parent().parent().find('#email').val();
@@ -26,19 +37,24 @@ jQuery(document).ready(function(jQuery) {
 				$('#email').focus();
 				layer.tips('× 请输入正确的邮箱', '#email');
 				return false;
-			}
+			}else if(comment.length == 0){
+            $('#comment').focus();
+            layer.tips('× 请输入评论内容', '#comment');
+            return false;
+         }
 			getdata('/Comment/subComment',{
-				name 	: author,
-				email 	: email,
+				name 	  : author,
+				email   : email,
 				comment : comment,
 				article_id : article_id,
-				fid 	: fid
+				fid 	  : fid
 			},function(data){
-				if(data.status > 0){
+				if(data.code > 0){
 					layer.msg('√ 评论成功');
-					var face = $('.face').val(),
-						name = $('.name').val(),
-						email = $('.email').val();
+					var face = $('.face').val(),name = $('.name').val(),email = $('.email').val();
+               if(!$('.login-show-info').hasClass('login')){
+                  web.loginShow(author);
+               }
 					_this.parent().parent().parent().find('#comment').val('');	
 					if(fid == 0){
 						html+= '<li id="comment-'+ data.data +'" class="comment even thread-even depth-1">';
@@ -48,8 +64,8 @@ jQuery(document).ready(function(jQuery) {
                   html+= '        <div class="comment-text">';
                   html+= '            <div class="comment-info">';
                   html+= '                <h6 class="comment-author">';
-                  html+= '                    '+ name +'';
-                  html+= '				</h6>';
+                  html+= '                    '+ author +'';
+                  html+= '				      </h6>';
                   html+= '            </div>';
                   html+= '            <div class="comment-content">';
                   html+=				comment;
@@ -107,7 +123,7 @@ jQuery(document).ready(function(jQuery) {
                      html+= '            <div class="comment-text">';
                      html+= '            <div class="comment-info">';
                      html+= '                <h6 class="comment-author">';
-                     html+= '                    <a href="javascript:;" rel="external nofollow" class="url">'+ name +'</a> ';                            
+                     html+= '                    <a href="javascript:;" rel="external nofollow" class="url">'+ author +'</a> ';                            
                      html+= '                </h6>';     
                      html+= '            </div>';
                      html+= '            <div class="comment-content">';
@@ -122,7 +138,6 @@ jQuery(document).ready(function(jQuery) {
                      _this.parent().parent().parent().parent().parent().hide();
                      _this.parent().parent().parent().parent().parent().parent().find('.children').prepend(html);
 					}
-					
 				}else{
 					layer.msg('× 评论出错');
 				}

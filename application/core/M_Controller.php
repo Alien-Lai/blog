@@ -11,11 +11,6 @@ class M_Controller extends CI_Controller {
     private $getCg;
 
     /**
-     * common model
-     */
-    private $commonModel;
-
-    /**
      *  category table
      */
     protected static $category = 'category';
@@ -29,33 +24,31 @@ class M_Controller extends CI_Controller {
 	{
 		parent::__construct();	
 		// 公共模型
-        $this->load->model('common','common');
+        $this->load->model('common','commonModel');
         $this->load->model('article','articleModel');
-
-        $myInfo = ['face'=>'/Public/Home/img/avatar.png','name'=>'lmj'];
+        
+        $myInfo = ['face'=>'/static/img/avatar.png','name'=>'lmj'];
         $this->getCg = $this->GetCategory();
         $this->smarty->assign('category', $this->getCg);
         $this->smarty->assign('myInfo', $myInfo);
         $this->smarty->assign('head', $this->head_arr);
 
         define('CONTROLLER_NAME', $this->uri->segment(2, ''));
-        // echo CONTROLLER_NAME;
         // 后台地址
-        define('BACK_URL', '192.168.0.11:721');
+        define('BACK_URL', '192.168.0.17:721');
         // 控制器名
         define('CONTROLLER', '/'.strtolower(CONTROLLER_NAME));
         // cookie
         define('COOKIE_EXP_TIME', 3600*24*30);
         // 默认用户头像
-        define('USER_DEFAULT_FACE','/Public/Home/img/default.png');
+        define('USER_DEFAULT_FACE','/static/img/default.png');
+        // IS_AJAX
+        define('IS_AJAX', $this->input->is_ajax_request());
 	}
 
-	/**
-	 * GetCategory
-	 * @return array
-	 */
+    // GetCategory
     private function GetCategory()
     {
-        return $this->common->GetCategory();
+        return $this->commonModel->GetCategory();
     }
 }

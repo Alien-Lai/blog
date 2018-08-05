@@ -7,6 +7,19 @@
 	font-style: normal;
 	font-weight: normal;
 }
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello.eot?99624570');
+  src: url('../fonts/fontello.eot?99624570#iefix') format('embedded-opentype'),
+       url('../fonts/fontello.woff2?99624570') format('woff2'),
+       url('../fonts/fontello.woff?99624570') format('woff'),
+       url('../fonts/fontello.ttf?99624570') format('truetype'),
+       url('../fonts/fontello.svg?99624570#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{font-family:suxingme;src:url(../fonts/suxingme.otf) format("opentype");font-weight:400}
+
 
 html {
 	-webkit-box-sizing: border-box;
@@ -75,8 +88,8 @@ input,
 button,
 select,
 textarea {
-	font-size: 16px;
-	line-height: 1.2;
+	font-size: 14px;
+	line-height: 1.6;
 }
 
 /* 设置字体大小 */

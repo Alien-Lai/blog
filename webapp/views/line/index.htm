@@ -18,7 +18,7 @@
                                             <div class="posts-default-content">
 
                                                 <div class="posts-text">
-                                                    <a href="/article/{$item.id}">{$item.content}</a>
+                                                    <a href="/articles/{$item.id}">{$item.content}</a>
                                                 </div>
                                                 <div class="posts-default-info">
                                                     <ul>
@@ -45,25 +45,22 @@
                                      style="visibility: visible; animation-name: fadeInUp;">
                                     <div class="content-box">
                                         <div class="posts-default-img">
-                                            <a href="/article/{$item.id}"
+                                            <a href="/articles/{$item.id}"
                                                title="{$item.title}" target="_blank">
                                                 <div class="overlay"></div>
                                                 {foreach from=$item.face item=obj}
-                                                    <img class="lazy thumbnail"
-                                                     data-original=""
-                                                     src="http://{$smarty.const.BACK_URL}{$obj}"
-                                                     alt="{$item.title}" style="display: block;">
+                                                    <img class="lazy thumbnail" data-original="" src="http://{$smarty.const.BACK_URL}{$obj}" alt="{$item.title}" style="display: block;">
                                                 {/foreach}    
                                             </a>
                                         </div>
                                         <div class="posts-default-box">
                                             <div class="posts-default-title">
                                                 <div class="post-entry-categories">
-                                                    <foreach from="item.tags" id="obj">
+                                                    {foreach from=$item.tags item=obj}
                                                         <a href="/tag/{$obj}" rel="tag">{$obj}</a>
-                                                    </foreach>
+                                                    {/foreach}
                                                 </div>
-                                                <h2><a href="/article/{$item.id}" title="{$item.title}" target="_blank">{$item.title}</a>
+                                                <h2><a href="/articles/{$item.id}" title="{$item.title}" target="_blank">{$item.title}</a>
                                                 </h2>
                                             </div>
                                             <div class="posts-default-content">
@@ -94,7 +91,7 @@
                                 <div class="ajax-load-con content wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                                     <div class="content-box posts-gallery-box">
                                         <div class="posts-gallery-img">
-                                            <a href="/article/{$item.id}" title="{$item.title}">
+                                            <a href="/articles/{$item.id}" title="{$item.title}">
                                                 {foreach from=$item.face item=obj}
                                                     <img class="lazy thumbnail" data-original="" src="http://{$smarty.const.BACK_URL}{$obj}" alt="{$item.title}" style="display: block;">
                                                 {/foreach}
@@ -102,7 +99,7 @@
                                         </div>
                                         <div class="posts-gallery-content">
                                             <h2>
-                                                <a href="/article/{$item.id}" title="{$item.title}">{$item.title}</a>
+                                                <a href="/articles/{$item.id}" title="{$item.title}">{$item.title}</a>
                                             </h2>
 
                                             <div class="posts-gallery-text">
@@ -131,11 +128,11 @@
                                     <div class="content-box posts-image-box">
                                         <div class="posts-default-title">
                                             <div class="post-entry-categories">
-                                                <volist name="item.tags" id="obj">
+                                                {foreach from=$item.tags item=obj}
                                                     <a href="/tag/{$obj}" rel="tag">{$obj}</a>
-                                                </volist>
+                                                {/foreach}
                                             </div>
-                                            <h2><a href="/article/{$item.id}" title="{$item.title}"
+                                            <h2><a href="/articles/{$item.id}" title="{$item.title}"
                                                    target="_blank">{$item.title}</a></h2>
                                         </div>
                                         <div class="post-images-item">
@@ -143,7 +140,7 @@
                                                 {foreach from=$item.face item=obj}
                                                     <li>
                                                         <div class="image-item">
-                                                            <a href="/article/{$item.id}">
+                                                            <a href="/articles/{$item.id}">
                                                                 <div class="overlay"></div>
                                                                 <img class="lazy thumbnail"
                                                                      data-original=""
@@ -176,7 +173,7 @@
                         {/foreach}
                     </div>
                     <div class="clearfix"></div>
-                    {if $data.list|count gt 0}
+                    {if $data.total gt 10}
                         <div id="ajax-load-posts">
                             <button id="fa-loadmore" class="button button-more wow fadeInUp" data-wow-delay="0.3s"
                                     data-home="true" data-paged="2" data-action="fa_load_postlist" data-total="4"
@@ -206,7 +203,7 @@
                                     <a href="/special/china" title="中国">
                                         <div class="overlay"></div>
                                         <div class="image"
-                                             style="background-image: url(//wp-content/uploads/2017/07/2017072901045867.jpg);"></div>
+                                             style="background-image: url('{$smarty.const.STATIC}/img/img_usercard_bg.jpg');"></div>
                                         <div class="title">
                                             <h4>国，是以华夏文明为源泉、中华文化为基础，并以汉族为主体民族的多民族国家，通用汉语、汉字，汉族与少数民族</h4>
 
@@ -220,7 +217,7 @@
                                     <a href="/special/keji" title="恐怖故事">
                                         <div class="overlay"></div>
                                         <div class="image"
-                                             style="background-image: url(//wp-content/uploads/2017/09/2017090212240145.jpg);"></div>
+                                             style="background-image: url('{$smarty.const.STATIC}/img/img_usercard_bg.jpg');"></div>
                                         <div class="title">
                                             <h4>最受欢迎的恐怖故事广播</h4>
 
@@ -234,7 +231,7 @@
                                     <a href="/special/gg" title="广告">
                                         <div class="overlay"></div>
                                         <div class="image"
-                                             style="background-image: url(//wp-content/uploads/2016/10/2016101811390365.jpg);"></div>
+                                             style="background-image: url('{$smarty.const.STATIC}/img/img_usercard_bg.jpg');"></div>
                                         <div class="title">
                                             <h4>松下那些情怀的广告</h4>
 
@@ -488,4 +485,5 @@
     </div>
 </div>
 <div class="clearfix"></div>
-<script src="{$smarty.const.STATIC}/js/index.js"></script>   
+<script src="{$smarty.const.STATIC}/js/index.js"></script>
+{include file="common/footer"}  
