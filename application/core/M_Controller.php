@@ -8,12 +8,7 @@ class M_Controller extends CI_Controller {
     /**
      * category nav
      */
-    private $getCg;
-
-    /**
-     *  category table
-     */
-    protected static $category = 'category';
+    private $category;
 
     /**
      *  Head-Css
@@ -28,8 +23,8 @@ class M_Controller extends CI_Controller {
         $this->load->model('article','articleModel');
         
         $myInfo = ['face'=>'/static/img/avatar.png','name'=>'lmj'];
-        $this->getCg = $this->GetCategory();
-        $this->smarty->assign('category', $this->getCg);
+        $this->category = $this->GetCategory();
+        $this->smarty->assign('category', $this->category);
         $this->smarty->assign('myInfo', $myInfo);
         $this->smarty->assign('head', $this->head_arr);
 

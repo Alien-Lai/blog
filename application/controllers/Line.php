@@ -21,8 +21,8 @@ class Line extends M_Controller {
     public function loadMore()
     {
         if(IS_AJAX){
-            $page     = getParam($_POST,null,'page');
-            $category = getParam($_POST,null,'category');
+            $page     = getParam($_POST,'page');
+            $category = getParam($_POST,'category');
             $pageData = $this->articleModel->getArtlist((int)$page,$category);
             $list     = $pageData['list'];
             if(!empty($list)){

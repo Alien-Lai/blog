@@ -23,10 +23,6 @@ class Articles extends M_Controller {
             throw new Exception("Error Processing Request", 1);
         }
 
-        $str = str_replace('\\','/', "[img src='upload\0180805\1533447795_ObNQpY3rUf.png' alt='图片描述']");
-        preg_match_all('/\[img src=\'(.*?)\' alt=\'图片描述\'\]/ism', $str, $matches);
-        echo $str;
-        print_r($matches);
         $detail  = $this->articleModel->getDetailByID($id);
         $comment = $this->articleModel->getArticleComment($id);
         $this->smarty->assign('detail',$detail);

@@ -5,8 +5,8 @@
 <input type="hidden" class="name" value="{$smarty.cookies.comment_name|default:''}">
 <input type="hidden" class="email" value="{$smarty.cookies.comment_email|default:''}">
 <input type="hidden" class="face" value="{$smarty.const.USER_DEFAULT_FACE|default:''}">
-<form id="uploadForm" style="display: none;">  
-    <input type="file" name="file" class="file">
+<form id="uploadForm" style="display: none;" enctype="multipart/form-data">  
+    <input type="file" name="file[]" class="file" multiple="multiple" accept="image/*">
 </form>  
 <section class="mobile-overlay" id="mobile-overlay">
     <div class="mobile-search">
@@ -50,7 +50,10 @@
     <div class="container" style="transform: none;">
 
   
-        <div class="breadcrumbs hidden-xs"><span itemprop="itemListElement"><a href="http://cosy.iwpzt.com/" itemprop="item" class="home"><span itemprop="name">首页</span></a></span> <span class="sep"><i class="fa fa-angle-right"></i></span> <span itemprop="itemListElement"><a href="http://cosy.iwpzt.com/category/shangye" itemprop="item"><span itemprop="name">商业</span></a></span> <span class="sep"><i class="fa fa-angle-right"></i></span> <span class="current">正文</span></div>        <div class="row" style="transform: none;">
+        <div class="breadcrumbs hidden-xs">
+<!--             <span itemprop="itemListElement"><a href="http://cosy.iwpzt.com/" itemprop="item" class="home"><span itemprop="name">首页</span></a></span> <span class="sep"><i class="fa fa-angle-right"></i></span> <span itemprop="itemListElement"><a href="http://cosy.iwpzt.com/category/shangye" itemprop="item"><span itemprop="name">商业</span></a></span> <span class="sep"><i class="fa fa-angle-right"></i></span> <span class="current">正文</span> -->
+        </div>        
+        <div class="row" style="transform: none;">
             <main class="l-main col-xs-12 col-sm-8 col-md-9">
                 <div class="suxing post-cover">
                     <div class="image" style="background-image: url('{$smarty.const.STATIC}/img/content-default-top-img.jpg');"></div>
@@ -163,8 +166,7 @@
         </h4>
         <div id="commentform" class="comment-form">
             <div class="comment-avatar">
-                <img alt="" src="{$smarty.const.USER_DEFAULT_FACE}" class="avatar avatar-50 photo"
-                     height="50" width="50"></div>
+                <img alt="" src="{$smarty.const.USER_DEFAULT_FACE}" class="avatar avatar-50 photo"></div>
             <div class="comment-author-from">
                 <div class="form-comment-info no-login-input" {if $smarty.cookies.comment_name|default:'' neq '' && $smarty.cookies.comment_email|default:'' neq ''}style="display:none;"{/if}>
                     <div class="form-group row">

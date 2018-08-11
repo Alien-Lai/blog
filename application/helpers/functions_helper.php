@@ -132,7 +132,7 @@ if(! function_exists('cookie')){
  */
 if(! function_exists('getParam')){
 
-    function getParam(&$arr,$def,$name='') 
+    function getParam(&$arr, $name='', $def = NUll) 
     {
         if (is_array($arr) && isset($arr[$name])) {
             $str    =    &$arr["$name"];
@@ -142,7 +142,7 @@ if(! function_exists('getParam')){
             return $def;
         }
         if (is_array($str)) {
-            foreach ($str as $key=>$element) getParam($str,$def,$key);
+            foreach ($str as $key=>$element) getParam($str, $key, $def);
         }
         if (!is_array($str)) {
             $str = _filter_param($str,$def);

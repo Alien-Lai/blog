@@ -9,7 +9,7 @@ trait CommonTrait
      *  返回Json格式数据
      *  @return string
      */
-    public function formatReturn(int $status ,string $message ,$data='' ,int $code = 0)
+    public function formatReturn(int $status ,string $message ,$data='' ,int $code = null)
     {
         $data = [
             'status'  => $status,
@@ -25,7 +25,7 @@ trait CommonTrait
      *  @param  int    $errCode  错误码 
      *  @return string $msg      错误信息
      */
-    private function getUploadErr($errCode)
+    public function getUploadErr($errCode)
     {
         switch ($errCode) {
             case '1':
@@ -44,26 +44,29 @@ trait CommonTrait
                 $msg = '传文件大小为0';
                 break;    
             default:
-                $msg = '';
+                $msg = 'error';
                 break;
         }
         return $msg;
     }
 
-    /*
-     *  解决cookie不能立即生效问题
-     *  @param $value 支持数组
+    /**
+     *  图片格式检测，大小检测
+     *
+     * 
      */
-    function cookie($var, $value = '', $time = 0, $path = '', $domain = '', $s = false)
+    public function CheckImgFile($files, $allow_type = array('image/jpg','image/png','image/jpeg','image/gif','image/bmp'), $size = 1024*1024*5)
     {
-        $_COOKIE[$var] = $value;
-        if (is_array($value)) {
-            foreach ($value as $k => $v) {
-                setcookie($var . '[' . $k . ']', $v, $time, $path, $domain, $s);
-            }
-        } else {
-            setcookie($var, $value, $time, $path, $domain, $s);
+        $type  = $files['file']['type'];
+        $fsize = $files['file']['size'];
+        $returnData = [];
+        if(! in_array($type, $allow_type)){
+            $returnData = ['status'=>-1, 'message'=>'× 错误的图片类型'];
+        } elseif ($fsize > $size){
+            $returnData = ['status'=>-2, 'message'=>'× 图片不得大于5M'];
+        }else{
+            $returnData = ['status'=>1, 'message'=>'success'];
         }
+        return $returnData;
     }
-
 }

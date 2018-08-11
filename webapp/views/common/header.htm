@@ -26,9 +26,9 @@
 
 <div id="header" class="navbar-fixed-top nt-header" style="top: 0px;">
     <div class="container">
-        <h1 class="logo">
+<!--         <h1 class="logo">
             <a href="//" title="GRACE" style="background-image: url(//wp-content/themes/2018020921594790/img/logo.png);"></a>
-        </h1>
+        </h1> -->
 
         <div role="navigation" class="site-nav primary-menu">
             <div class="menu-fix-box">
@@ -38,7 +38,7 @@
                     {foreach from=$category item=item}
                         {if empty($item.children)}
                             <!-- current-menu-ancestor -->
-                            <li class="{if $smarty.const.CONTROLLER eq $item.parent_href || ($smarty.const.CONTROLLER eq '/index' && $item.parent_href eq '/')}current-menu-ancestor{/if}" data-a="{$smarty.const.BACK_URL}">
+                            <li class="{if $smarty.const.CONTROLLER eq $item.parent_href || ($smarty.const.CONTROLLER eq '/index' && $item.parent_href eq '/')}current-menu-ancestor{/if}">
                                 <a href="{$item.parent_href}">{$item.parent_name}</a>
                             </li>
                         {else}

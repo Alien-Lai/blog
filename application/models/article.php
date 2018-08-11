@@ -174,7 +174,7 @@ class Article extends Common {
     /**
      * 获取上一篇，下一篇
      */
-    private function getNearArticle(string $type = 'prev', int $nowID)
+    private function getNearArticle($type = 'prev', int $nowID)
     {
         $whereString = ($type == 'prev') ? "id < $nowID" : "id > $nowID";
         return $this->db->select('id,title')

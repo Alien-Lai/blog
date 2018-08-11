@@ -815,6 +815,7 @@ $(document).on('click', '.add_image', function(event) {
 $(document).on('change', '.file', function(event) {
     event.preventDefault();
     var formData = new FormData($( "#uploadForm" )[0]);  
+    formData.append('type','comment');
     $.ajax({  
         url: '/Upload/index' ,  
         type: 'POST',  
@@ -830,9 +831,9 @@ $(document).on('change', '.file', function(event) {
         success: function (data) {  
             layer.closeAll('loading');
             if(data.code > 0){
-                $('#comment').insertAtCaret(" [img src='"+ data.data +"' alt='图片描述']\n");
+                $('#comment').insertAtCaret(' [img src="'+ data.data +'" alt="图片描述"]');
             }else{
-                layer.msg('error');
+                layer.msg(data.message);
             }
         },  
         error: function (error) {  
